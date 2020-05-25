@@ -4,10 +4,26 @@ let pieCtx = document.getElementById("deptSales").getContext("2d");
 
 let yearlyLabel = document.getElementById("yearlyTotal");
 
+// Values from the form
+let newAmount = document.getElementById("itemAmount");
+let newMonth = document.getElementById("monthId");
+
 // Monthly Totals
 let yearlyTotal = 0;
 
-// Code goes here
+let monthlySales = new Set();
+let monthlyLabels = new Set();
+
+function addSale() {
+  monthlySales.add(newAmount.value);
+  monthlyLabels.add(newMonth.value);
+  alert("You have entered in " + monthlySales.size + " sales");
+  console.log(monthlySales);
+}
+
+function deleteValue() {
+  monthlySales.delete("1500");
+}
 
 // Bar chart
 // let monthlySalesChart = new Chart(ctx, {
