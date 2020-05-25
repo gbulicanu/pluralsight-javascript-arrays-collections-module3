@@ -8,11 +8,21 @@ let yearlyLabel = document.getElementById("yearlyTotal");
 let newAmount = document.getElementById("itemAmount");
 let newMonth = document.getElementById("monthId");
 
+let hikingRadio = document.getElementById("hiking");
+let runningRadio = document.getElementById("running");
+let huntingRadio = document.getElementById("hunting");
+
 // Monthly Totals
 let yearlyTotal = 0;
 
 let monthlySales = new Set();
 let monthlyLabels = new Set();
+
+let categories = new WeakSet();
+
+let hiking = { category: "Hiking" };
+let running = { category: "Running" };
+let hunting = { category: "Hunting" };
 
 function addSale() {
   monthlySales.add(parseInt(newAmount.value));
@@ -33,6 +43,18 @@ function addSale() {
 
   monthlySalesChart.data.labels = Array.from(monthlyLabels);
   monthlySalesChart.update();
+
+  if (hikingRadio.checked) {
+    categories.add(hiking);
+  } else if (runningRadio.checked) {
+    categories.add(running);
+  } else if (huntingRadio.checked) {
+    categories.add(hunting);
+  } else {
+    // Do something else
+  }
+
+  console.log(categories);
 }
 
 function deleteValue() {
